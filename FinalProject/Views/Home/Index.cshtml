@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome!</h1>
+    <p>This is my first Web app with ASP.NET Core.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>For getting Report press <a asp-controller="Message" asp-action="SendMessage" asp-route-userName="@User.Identity.Name">Get Report</a></p>
+    }
+    else
+    {
+        <p>For getting Report <a asp-controller="Account" asp-action="Login" >sign in</a> or <a asp-controller="Account" asp-action="Register">register.</a></p>
+    }    
+</div>

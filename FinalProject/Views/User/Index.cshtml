@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Identity.DAL.Entities.User>
+@{
+    ViewBag.Title = "List of Users";
+}
+<a class="btn btn-primary" asp-action="Create">Create</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password(Hash)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model)
+        {
+            <tr>
+                <td>
+                    <a class="text-danger" asp-action="Delete" asp-route-name="@user.UserName">Delete</a>
+                </td>
+                <td>@user.Id</td>
+                <td>
+                   <a asp-action="Details" asp-route-name="@user.UserName">@user.UserName</a>
+                </td>
+                <td>@user.Email</td>
+                <td>@user.PasswordHash</td>
+                <td>
+                    <a asp-action="Edit" asp-route-name="@user.UserName">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

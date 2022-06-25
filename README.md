@@ -1,2 +1,2 @@
-# MailSenderService
-Сервис по отправке сообщений
+# MessageSenderService
+Сервис по отправке сообщений, с применением MVC
