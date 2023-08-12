@@ -48,14 +48,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddMvc();
 builder.Services.AddSingleton<ISendMessageService,SendMessageService>();
 builder.Services.AddSingleton<MessageGateway>();
-builder.Services.AddSingleton(new MailGatewayOptions()
-{
-    Password = "****",
-    SenderName = "****@mail.ru",
-    SMTPServer = "smtp.mail.ru",
-    Sender = "*****",
-    Port = 465
-});
+builder.Services.AddSingleton<MailGatewayOptions>();
 builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 builder.Services.AddHostedService<QuartzHostedService>();
