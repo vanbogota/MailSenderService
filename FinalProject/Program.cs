@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 var configure = builder.Configuration;
@@ -46,9 +47,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddMvc();
+
+MailGatewayOptions mailGatewayOptions = configure.GetSection("SmtpSettings").Get<MailGatewayOptions>();
+builder.Services.AddSingleton(mailGatewayOptions);
 builder.Services.AddSingleton<ISendMessageService,SendMessageService>();
 builder.Services.AddSingleton<MessageGateway>();
-builder.Services.AddSingleton<MailGatewayOptions>();
 builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 builder.Services.AddHostedService<QuartzHostedService>();
@@ -64,7 +67,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();    
+    app.UseDeveloperExceptionPage();
+    
 }
 
 app.UseHttpsRedirection();

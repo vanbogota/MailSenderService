@@ -6,11 +6,11 @@ namespace FinalProject.Services;
 
 public class ReportRazor : IReport
 {
-    private const string _TemplateText = 
+    private const string _TemplateText =
         @"Report for Manager
-Report Number: @Model.ReportNumber
-Creation Time: @Model.ReportCreationTime.ToString(""dd.MM.yyyy HH:mm:ss"")
-Subject: @Model.ReportDescription";
+          Report Number: @Model.ReportNumber
+          Creation Time: @Model.ReportCreationTime.ToString(""dd.MM.yyyy HH:mm:ss"")
+          Subject: @Model.ReportDescription";
     public int ReportNumber { get; }
     public DateTime CreationDate { get; set; }
     public string? Description { get; set; }

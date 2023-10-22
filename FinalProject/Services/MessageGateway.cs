@@ -8,7 +8,7 @@ namespace FinalProject.Services
     {
         private readonly MailGatewayOptions _options;
         private readonly SmtpClient _client = new SmtpClient();
-
+        
         public MessageGateway(MailGatewayOptions options)
         {
             if(options is null)
@@ -17,15 +17,15 @@ namespace FinalProject.Services
             }
             _options = options;
 
-            _client.Connect(options.SMTPServer, options.Port);
-            _client.Authenticate(options.Sender, options.Password);
+            _client.Connect(options.Server, options.Port);
+            _client.Authenticate(options.Sender, options.Password);            
         }
 
         public async Task SendMessageAsync(Message message)
         {
             MimeMessage emailMessage = new MimeMessage();
 
-            emailMessage.From.Add(new MailboxAddress(_options.SenderName, _options.Sender));
+            emailMessage.From.Add(new MailboxAddress(_options.UserName, _options.Sender));
             emailMessage.To.Add(new MailboxAddress(message.Name, message.To));
             emailMessage.Subject = message.Subject;
             emailMessage.Body = new TextPart(message.IsHtml ? MimeKit.Text.TextFormat.Html : MimeKit.Text.TextFormat.Text)

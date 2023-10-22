@@ -12,8 +12,12 @@ public class SingletonJobFactory : IJobFactory
     }
     public IJob NewJob(TriggerFiredBundle bundle, IScheduler scheduler)
     {
-        return _serviceProvider.GetRequiredService(bundle.JobDetail.JobType)
-            as IJob;
+        IJob? job = _serviceProvider.GetRequiredService(bundle.JobDetail.JobType) as IJob;
+        if (job == null)
+        {
+            throw new NullReferenceException("Job is null");
+        }
+        return job;
     }
 
     public void ReturnJob(IJob job)
