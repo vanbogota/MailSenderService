@@ -5,19 +5,18 @@ are sent to the specified email addresses according to a specified schedule.
 # Stack 
 ASP.NET MVC Core, SQL, Web API, Razor Pages, Entity Framework, Quartz, MailKit.
 
-# Description
-- Application following the MVC pattern;
-- Starting page:
+# Presentation
+- Application following the MVC pattern, with using the Razor Pages:
 
-![1](https://github.com/vanbogota/MessageSenderService/assets/84347281/a8d47f43-6505-4562-881b-5437306fd45f)
+![start page](https://github.com/vanbogota/mysite/blob/master/assets/2/startpage.gif)
 
-- Registration page:
+- With form validation:
 
-![2](https://github.com/vanbogota/MessageSenderService/assets/84347281/c08951ac-0c25-444e-b41c-4128b8929e68)
+![2](https://github.com/vanbogota/mysite/blob/master/assets/2/registration_validation.gif)
 
-- Loged in user page:
+- Registred users can get the report:
 
-![3](https://github.com/vanbogota/MessageSenderService/assets/84347281/34853621-2bce-4223-8b92-e24db59c4089)
+![send report](https://github.com/vanbogota/mysite/blob/master/assets/2/login_send.gif)
   
 - The report generation is based on a specified template, initially built on the Razor Engine;
 
